@@ -4,9 +4,9 @@ use PHPMailer\PHPMailer\Exception;
 require_once "../vendor/autoload.php";
 
 function plugins() { ?>
-<link rel="stylesheet" href="/skripsi/assets/plugins/bootstrap-more/css/bootstrap.min.css">
-<link rel="stylesheet" href="/skripsi/assets/dist/css2/components.css">
-<script src="/skripsi/assets/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="../assets/plugins/bootstrap-more/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/dist/css2/components.css">
+<script src="../assets/dist/jquery.min.js"></script>
 <script src="../js/sweetalert2/sweetalert2.all.min.js"></script>
 
 <?php }
@@ -68,8 +68,9 @@ if (isset($_GET['laporan_diterima'])) {
 				});
 			});
 		</script>
-		<?php }
+		<?php 
 	}
+}
 
 // Laporan Tolak
 
@@ -82,12 +83,12 @@ if (isset($_GET['laporan_diterima'])) {
 		if (mysqli_affected_rows($conn) > 0) {
 			$forEmail = mysqli_query($conn, "SELECT * FROM tb_laporan where id = '$id' ");
 			$forEmail = mysqli_fetch_array($forEmail);
-			sendEmail($forEmail['email'], $forEmail['nama'], 'Pengaduan Anda ditolak', "Penerima");
+			mail($forEmail['email'], 'Pengaduan Ditolak', 'Maaf Pengaduan Anda Ditolak, Terima Kasih Telah Melakukan Pengaduan !!!', 'From:cs@uin-report.tryapp.my.id');
 			plugins(); ?>
 			<script>
 				$(document).ready(function() {
 					swal({
-						title: 'Berhasil',
+						title: 'Berhasil Ditolak',
 						text: 'Laporan berhasil di Tolak',
 						icon: 'success'
 					}).then((data) => {
