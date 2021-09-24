@@ -67,7 +67,7 @@ if (isset($_POST['login'])) {
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="../#">
-                                <img style="width:240px;height:160px;" src="../images/icon/uin.png">
+                                <img style="width:240px;height:160px;" src="../images/icon/UIN.png">
                             </a>
                         </div>
                         <div class="login-form">
