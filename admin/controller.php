@@ -53,8 +53,8 @@ if (isset($_GET['laporan_diterima'])) {
 		// sendEmail($forEmail['email'], $forEmail['nama'], 'Pengaduan Anda diterima', "Penerima");
 		mail($forEmail['email'], 'Pengaduan diterima', 'Pengaduan Anda Telah diterima, Terima Kasih Telah Melakukan Pengaduan !!!', 'From:cs@uin-report.tryapp.my.id');
 	// EDIT LAPORAN
-	mysqli_query($conn, $query);
-	if (mysqli_affected_rows($conn) > 0) {
+	
+	if (mysqli_query($conn, $query)) {
 		
 		plugins(); ?>
 		<script>
@@ -64,7 +64,7 @@ if (isset($_GET['laporan_diterima'])) {
 					text: 'Laporan berhasil di Setujui',
 					icon: 'success'
 				}).then((data) => {
-					location.href = 'datalaporan.php?>';
+					location.href = 'datalaporan.php';
 				});
 			});
 		</script>
@@ -91,7 +91,7 @@ if (isset($_GET['laporan_diterima'])) {
 						text: 'Laporan berhasil di Tolak',
 						icon: 'success'
 					}).then((data) => {
-						location.href = 'datalaporan.php?>';
+						location.href = 'datalaporan.php';
 					});
 				});
 			</script>
