@@ -11,34 +11,34 @@ function plugins() { ?>
 
 <?php }
 
-function sendEmail($to, $toName, $message, $subject)
-{
-	$from = 'skripsiakhir16@gmail.com';
-	$fromName = 'Admin';
-	$mail = new PHPMailer(true);
+// function sendEmail($to, $toName, $message, $subject)
+// {
+// 	$from = 'skripsiakhir16@gmail.com';
+// 	$fromName = 'Admin';
+// 	$mail = new PHPMailer(true);
 	
-	$mail->IsSMTP();
-	$mail->Mailer = "smtp";
-    // $mail->SMTPDebug  = 1;  
-	$mail->SMTPAuth   = TRUE;
-	$mail->SMTPSecure = "tls";
-	$mail->Port       = 587;
-	$mail->Host       = "smtp.gmail.com";
-	$mail->Username   = "skripsiakhir16@gmail.com";
-	$mail->Password   = "gowa26mei2017";
+// 	$mail->IsSMTP();
+// 	$mail->Mailer = "smtp";
+//     // $mail->SMTPDebug  = 1;  
+// 	$mail->SMTPAuth   = TRUE;
+// 	$mail->SMTPSecure = "tls";
+// 	$mail->Port       = 587;
+// 	$mail->Host       = "smtp.gmail.com";
+// 	$mail->Username   = "skripsiakhir16@gmail.com";
+// 	$mail->Password   = "gowa26mei2017";
 
-    $mail->From  = $from;
-    $mail->FromName  = $fromName;
-    $mail->Subject = $subject;
-    $mail->Body = $message;
-    $mail->addAddress($to, $toName);
-    try {
-        $mail->send();
-    } catch (Exception $e) {
-        echo "Mailer Error: " . $mail->ErrorInfo;
-        die("a");
-    }
-}
+//     $mail->From  = $from;
+//     $mail->FromName  = $fromName;
+//     $mail->Subject = $subject;
+//     $mail->Body = $message;
+//     $mail->addAddress($to, $toName);
+//     try {
+//         $mail->send();
+//     } catch (Exception $e) {
+//         echo "Mailer Error: " . $mail->ErrorInfo;
+//         die("a");
+//     }
+// }
 
 require('../koneksi.php');
 
@@ -50,7 +50,8 @@ if (isset($_GET['laporan_diterima'])) {
 	$query = "UPDATE tb_laporan SET status = 'Laporan Terima' WHERE id = '$id'";
 	$forEmail = mysqli_query($conn, "SELECT * FROM tb_laporan where id = '$id' ");
 		$forEmail = mysqli_fetch_array($forEmail);
-		sendEmail($forEmail['email'], $forEmail['nama'], 'Pengaduan Anda diterima', "Penerima");
+		// sendEmail($forEmail['email'], $forEmail['nama'], 'Pengaduan Anda diterima', "Penerima");
+		mail($forEmail['email'], 'Pengaduan diterima', 'Pengaduan Anda Telah diterima, Terima Kasih Telah Melakukan Pengaduan !!!', 'From:cs@uin-report.tryapp.my.id');
 	// EDIT LAPORAN
 	mysqli_query($conn, $query);
 	if (mysqli_affected_rows($conn) > 0) {
