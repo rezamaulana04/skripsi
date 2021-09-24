@@ -1,6 +1,6 @@
 <?php
 
-header('Location: pengaduan/index1.php');
+header('Location: pengaduan/index.php');
 require 'admin/template/header.php';
 
 ?>

@@ -67,7 +67,7 @@ if (isset($_POST['req']) && ($_POST['req'] == 'addLaporan')) {
 
 	if (mysqli_affected_rows($conn) > 0){
 		$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"."/pengaduan/index"."?kode_laporan=".$kode_laporan;
-		// sendEmail($email, '', 'silahkan verifikasi postigan anda '.$actual_link, 'email');
+		mail($email, 'Konfirmasi email', 'Silahkan verifikasi postigan anda '.$actual_link, 'From:Costumer Service UINAM');
 		$response = true; 
 
 	} else {
