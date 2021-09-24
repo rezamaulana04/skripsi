@@ -81,9 +81,7 @@ if (isset($_POST["updatedata"])){
                                         <td><?=$dta["status"] ?></td>
                                         <td class="text-center">
                                          <div class="table-data-feature">
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                <i class="zmdi zmdi-mail-send"></i>
-                                            </button>
+                                           
                                             <!-- <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <i class="zmdi zmdi-edit"></i>
                                             </button> -->
