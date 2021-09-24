@@ -1,0 +1,147 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html lang="zxx">
+
+<head>
+	<title>Photography Form Responsive Widget Template :: w3layouts</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Photography Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements"
+	/>
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- Meta tag Keywords -->
+	<!-- css files -->
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<!-- //css files -->
+	<!-- web-fonts -->
+	<link href="//fonts.googleapis.com/css?family=Londrina+Outline" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	<!-- //web-fonts -->
+</head>
+
+<body>
+	<!-- header -->
+	<h1>
+		<span>P</span>hotography
+		<span>F</span>orm</h1>
+	<!-- //header -->
+	<!-- content -->
+	<div class="main-content-agile">
+		<div class="sub-main-w3">
+			<form action="#" method="post">
+				<div class="form-style-agile">
+					<label>Your Name</label>
+					<input placeholder="Your Name" name="Name" type="text" required="">
+				</div>
+				<div class="w3layouts-grids">
+					<div class="form-style-agile form-grids-w3l">
+						<label>Your Email</label>
+						<input placeholder="Your Email" name="Email" type="email" required="">
+					</div>
+					<div class="form-style-agile form-grids-w3l">
+						<label>Contact Number</label>
+						<input placeholder="Contact Number" name="Number" type="text" required="">
+					</div>
+				</div>
+				<div class="w3layouts-grids">
+					<div class="form-style-agile form-grids-w3l">
+						<label>Select Date</label>
+						<input id="datepicker" placeholder="Select Date" name="date" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}"
+						    required="">
+					</div>
+					<div class="form-style-agile form-grids-w3l">
+						<label>Select Time</label>
+						<input type="text" id="timepicker" name="time" class="timepicker form-control" placeholder="Select Time" value=""  required="">
+					</div>
+				</div>
+				<div class="w3layouts-grids">
+					<div class="form-style-agile form-grids-w3l">
+						<label>How many photographers have to need?</label>
+						<select class="category" required="">
+							<option value="">Choose photographers</option>
+							<option value="">One</option>
+							<option value="">Two</option>
+							<option value="">More Than Two</option>
+						</select>
+					</div>
+					<div class="form-style-agile form-grids-w3l">
+						<label>How Many Hours of Coverage</label>
+						<select class="category" required="">
+							<option value="">Select Hours</option>
+							<option value="">2 Hours</option>
+							<option value="">3 Hours</option>
+							<option value="">6 Hours</option>
+							<option value="">Unsure</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-style-agile">
+					<label>My Photography Budget</label>
+					<select class="category" required="">
+						<option value="">Choose Your Budget</option>
+						<option value="">Under $20000</option>
+						<option value="">$20000 - $30000</option>
+						<option value="">$30000 - $40000</option>
+						<option value="">$40000 - $50000</option>
+						<option value="">$50000 - $60000</option>
+						<option value="">$60000 - $100000</option>
+					</select>
+				</div>
+				<div class="form-style-agile">
+					<label>Any other important Info</label>
+					<textarea name="Message" placeholder="Your Message..." required=""></textarea>
+				</div>
+				<input type="submit" value="Submit">
+			</form>
+		</div>
+	</div>
+	<!-- content -->
+	<!-- footer -->
+	<div class="footer">
+		<h2>&copy; 2018 Photography Form. All rights reserved | Design by
+			<a href="http://w3layouts.com">W3layouts</a>
+		</h2>
+	</div>
+	<!-- //footer -->
+
+
+	<!-- js -->
+	<script src="js/jquery-2.1.4.min.js"></script>
+
+	<!-- date-->
+	<link rel="stylesheet" href="css/jquery-ui.css" />
+	<script src="js/jquery-ui.js"></script>
+	<script>
+		$(function () {
+			$("#datepicker,#datepicker1").datepicker();
+		});
+	</script>
+	<!-- //date --> 
+
+	<!-- time -->
+	<script src="js/wickedpicker.js"></script>
+	<script>
+		$('.timepicker').wickedpicker({
+			twentyFour: false
+		});
+	</script>
+	<link href="css/wickedpicker.css" rel="stylesheet" type='text/css' media="all" />
+	<!-- //time -->
+
+</body>
+
+</html>
