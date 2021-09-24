@@ -9,7 +9,7 @@ if (isset($_POST["tambahdata"])){
     $username = $_POST['username'];
     $password = $_POST['password']; 
 
-    $query = "INSERT INTO tb_fakultas VALUES (null, '$nama_admin', '$nama_fakultas', '$username', '$password')";
+    $query = "INSERT INTO tb_fakultas VALUES (NULL, '$nama_admin', '$nama_fakultas', '$username', '$password')";
 
     if (mysqli_query($conn, $query)) {
         $notif = ["success", "Berhasil tambah data"]; 
