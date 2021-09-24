@@ -124,7 +124,7 @@ if (isset($_POST["submit"])){
 								<select name="fak" class="form-control required">
 									<option value="">.:: Pilih Fakultas ::.</option>
 									<?php  foreach($fakultas as $key) : ?>
-										<option value="<?= $key['id'] ?>">
+										<option value="<?= $key['nama_fakultas'] ?>">
 											<?= $key['nama_fakultas'] ?>
 										</option>
 									<?php endforeach ?>
