@@ -164,7 +164,11 @@ if (isset($_POST["updatedata"])){
                             </tr>
                             <tr>
                                 <td>7. Foto:</td>
-                                <td><?=$dta["foto"] ?></td>
+                                <td>
+                                    <a href="../pengaduan/images/foto_laporan/<?=$dta["foto"]?>" target="blank">
+                                        <?=$dta["foto"] ?>
+                                    </a> 
+                                </td>
                             </tr>
                             <tr>
                                 <td>8. Status:</td>
