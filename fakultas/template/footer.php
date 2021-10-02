@@ -32,6 +32,7 @@
 <script src="../js1/boostrap.min.js/"></script>
 <script src="../js1/highcharts.js"></script>
 <script src="../js1/exporting.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
 <script>
 	var chart1;
@@ -68,6 +69,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('[data-toggle1="tooltip"]').tooltip();
+        $('.table-data2').DataTable()
     })
 </script>
 

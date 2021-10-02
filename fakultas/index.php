@@ -13,8 +13,9 @@ $data = mysqli_query($conn, "SELECT * FROM tb_laporan");
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h1 class="title-4">Welcome back
-                                    <span>Dashboard!</span>
+                                <span>Selamat Datang di Halaman Admin Pelaporan</span>
+                                <h1 class="title-4">
+                                    <?= $fuck["nama_fakultas"] ?>
                                 </h1>
                                 <hr class="line-seprate">
                             </div>

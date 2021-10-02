@@ -1,7 +1,7 @@
 <?php
 
 require 'template/header.php';
-$data = mysqli_query($conn, "SELECT * FROM tb_laporan WHERE status='Laporan Terima'");
+$data = mysqli_query($conn, "SELECT * FROM tb_laporan WHERE status='Laporan Terima' AND fak='$id_fak'");
 
 if(isset($_GET['act']) && trim($_GET['act']) == 'validate') {
     $dataID = $_GET['id'];
@@ -78,8 +78,8 @@ if(isset($_GET['act']) && trim($_GET['act']) == 'validate') {
                                         <th>Nik / Nim</th>
                                         <th>Nama</th>
                                         <th>Email</th>
+                                        <th>Tanggal</th>
                                         <th width="50">Status</th>
-                                        <th width="50">Validasi Fak.</th>
                                         <th width="50">Aksi</th>
                                     </tr>
                                 </thead>
@@ -90,9 +90,7 @@ if(isset($_GET['act']) && trim($_GET['act']) == 'validate') {
                                         <td><?=$dta["nim"] ?></td>
                                         <td><?=$dta["nama"] ?></td>
                                         <td><?=$dta["email"] ?></td>
-                                        <td>
-                                            <span class="btn btn-success btn-sm"><?=$dta["status"] ?></span>
-                                        </td>
+                                        <td><?= date('d/m/Y', strtotime($dta["tanggal"])) ?></td>
                                         <td>
                                             <?php if($dta['readby_fakultas'] == 0) : ?>
                                                 <span class="btn btn-warning btn-sm">
@@ -108,12 +106,12 @@ if(isset($_GET['act']) && trim($_GET['act']) == 'validate') {
                                         <td class="text-center">
                                          <div class="table-data-feature">
                                             <?php if($dta['readby_fakultas'] == 0) : ?>
-                                                <a href="data-laporan.php?act=validate&id=<?=$dta['id']?>" class="item" data-toggle="tooltip" data-placement="top" title="Send">
+                                                <a href="data-laporan.php?act=validate&id=<?=$dta['id']?>" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Verifikasi">
                                                     <i class="fa fa-check-square"></i>
-                                                </a>
+                                                </a>&nbsp;
                                             <?php endif ?>
                                             
-                                            <button class="item" data-toggle="modal" data-target="#modaltambah" data-placement="top" title="More">
+                                            <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#modaltambah" data-placement="top" title="More">
                                                 <i class="zmdi zmdi-more"></i>
                                             </button>
                                         </div>

@@ -124,7 +124,7 @@ if (isset($_POST["submit"])){
 								<select name="fak" class="form-control required">
 									<option value="">.:: Pilih Fakultas ::.</option>
 									<?php  foreach($fakultas as $key) : ?>
-										<option value="<?= $key['nama_fakultas'] ?>">
+										<option value="<?= $key['id'] ?>">
 											<?= $key['nama_fakultas'] ?>
 										</option>
 									<?php endforeach ?>
@@ -353,32 +353,42 @@ if (isset($_POST["submit"])){
 		{
 			var data = new FormData($('form')[0]);
 
-			$.ajax({
-				url: "controller.php",
-				enctype: "multipart/form-data",
-				method: "POST",
-				data: data,
-				contentType: false,
-				processData: false,
-				success: function (data) {
-					if (data == true) {
-						Swal.fire({
-							title: 'Cek Email',
-							text: 'Silahkan Cek Email Untuk Verifikasi Pengaduan',
-							type: 'success',
-							onClose: () => {
-								location.href = "index.php";
-							}
-						});
-					} else {
-						Swal.fire({
-							title: 'Gagal Diproses',
-							text: 'Terjadi kesalahan Proses',
-							type: 'error'
-						});
+			var email_input = $('#email').val()
+			var email_verify = "@uin-alauddin.ac.id"
+			if (email_input.indexOf(email_verify) == -1) {
+				Swal.fire({
+					title: 'Email tidak diizinkan!',
+					text: 'Pastikan email yang anda gunakan adalah email UIN',
+					type: 'warning'
+				});
+			} else {
+				$.ajax({
+					url: "controller.php",
+					enctype: "multipart/form-data",
+					method: "POST",
+					data: data,
+					contentType: false,
+					processData: false,
+					success: function (data) {
+						if (data == true) {
+							Swal.fire({
+								title: 'Cek Email',
+								text: 'Silahkan Cek Email Untuk Verifikasi Pengaduan',
+								type: 'success',
+								onClose: () => {
+									location.href = "index.php";
+								}
+							});
+						} else {
+							Swal.fire({
+								title: 'Gagal Diproses',
+								text: 'Terjadi kesalahan Proses',
+								type: 'error'
+							});
+						}
 					}
-				}
-			});
+				});
+			}
 		}
 	});
 </script>

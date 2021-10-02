@@ -2,7 +2,7 @@
 
 
 require 'template/header.php';
-$data = mysqli_query($conn, "SELECT * FROM tb_laporan WHERE status='Laporan Baru' and verified = 1");
+$data = mysqli_query($conn, "SELECT * FROM tb_laporan WHERE verified = 1 ORDER BY id DESC");
 
 
 if (isset($_POST["tambahdata"])){
@@ -67,20 +67,34 @@ if (isset($_POST["updatedata"])){
                                     <tr>
                                         <th>No</th>
                                         <th>Nik / Nim</th>
+                                        <th>Fakultas Tujuan</th>
                                         <th>Nama</th>
-                                        <th>Email</th>
+                                        <!-- <th>Email</th> -->
+                                        <th>Tanggal</th>
                                         <th>Status</th>
                                         <th width="50">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no=1; foreach ($data as $dta) : ?>
+                                    <?php $no=1; foreach ($data as $dta) {
+                                    $id_fak = $dta['fak'];
+                                    $get_fak = mysqli_query($conn, "SELECT * FROM tb_fakultas WHERE id = '$id_fak'");
+                                    $fak = mysqli_fetch_assoc($get_fak);  ?>
                                     <tr class="tr-shadow">
                                         <td><?=$no ?></td>
                                         <td><?=$dta["nim"] ?></td>
+                                        <td><?=$fak["nama_fakultas"] ?></td>
                                         <td><?=$dta["nama"] ?></td>
-                                        <td><?=$dta["email"] ?></td>
-                                        <td><span class="btn btn-primary btn-sm"><?=$dta["status"] ?></span></td>
+                                        <!-- <td><?=$dta["email"] ?></td> -->
+                                        <td><?= date('d/m/Y', strtotime($dta["tanggal"])) ?></td>
+                                        <td>
+                                            <?php 
+                                            if ($dta["status"] == 'Laporan Baru') $warna = 'primary'; 
+                                            else if ($dta["status"] == 'Laporan Terima') $warna = 'success'; 
+                                            else $warna = 'danger'; 
+                                            ?>
+                                            <span class="badge badge-<?= $warna ?> f-13"><?=$dta["status"] ?></span>
+                                        </td>
                                         <td class="text-center">
                                          <div class="table-data-feature">
                                              <a href="controller.php?laporan_diterima=true&id=<?= $dta["id"]?>" class="item" data-toggle="tooltip" data-placement="top" title="Di Terima">
@@ -92,13 +106,13 @@ if (isset($_POST["updatedata"])){
                                             <a href="controller.php?tolak_laporan=true&id=<?= $dta["id"]?>" class="item" data-toggle="tooltip" data-placement="top" title="Di Tolak">
                                                 <i class="fa fa-times"></i>
                                             </a>
-                                            <a href="#" class="item" data-toggle="modal" data-target="#modaltambah" data-placement="top" title="More">
+                                            <a href="#" class="item" data-toggle="modal" data-target="#modaltambah<?= $dta["id"]?>" data-placement="top" title="More">
                                                 <i class="zmdi zmdi-more"></i>
                                             </a>
                                         </div>
                                     </td>
                                 </tr>
-                                <?php $no=$no+1; endforeach; ?>
+                                <?php $no=$no+1; } ?>
                             </tbody>
                         </table>
                     </div>
@@ -110,7 +124,12 @@ if (isset($_POST["updatedata"])){
 </div>
 </div>
 
-<div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+<?php $no=1; foreach ($data as $dta) {
+$id_fak = $dta['fak'];
+$get_fak = mysqli_query($conn, "SELECT * FROM tb_fakultas WHERE id = '$id_fak'");
+$fak = mysqli_fetch_assoc($get_fak); 
+?>
+<div class="modal fade" id="modaltambah<?= $dta["id"]?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -144,7 +163,7 @@ if (isset($_POST["updatedata"])){
                             </tr>
                             <tr>
                                 <td>5. Fakultas / Lembaga:</td>
-                                <td><?=$dta["fak"] ?></td>
+                                <td><?=$fak["nama_fakultas"] ?></td>
                             </tr>
                             <tr>
                                 <td>6. Deskripsi:</td>
@@ -162,6 +181,10 @@ if (isset($_POST["updatedata"])){
                                 <td>8. Status:</td>
                                 <td><?=$dta["status"] ?></td>
                             </tr>
+                            <tr>
+                                <td>9. Tanggal:</td>
+                                <td><?= date('d/m/Y', strtotime($dta["tanggal"])) ?></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -171,6 +194,7 @@ if (isset($_POST["updatedata"])){
     </div>
 </div>
 </div>
+<?php $no=$no+1; } ?>
 
 <?php foreach ($data as $dta) {  ?>
 <!-- <div class="modal fade" id="mediumModal<?=$dta["id"] ?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
