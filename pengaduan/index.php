@@ -136,13 +136,13 @@ if (isset($_POST["submit"])){
 								<input type="hidden" name="req" value="addLaporan">
 								<p><code>(*)</code> wajib di isi</p>
 							</fieldset>
-							<h3>Finish</h3>
+<!-- 							<h3>Finish</h3>
 							<fieldset class="form-input">
 								<h4>Syarat & Ketentuan</h4>
 
 								<input id="acceptTerms-2" name="acceptTerms" type="checkbox" class=""> <label for="acceptTerms-2">
 								Saya setuju dengan Syarat dan Ketentuan.</label>
-							</fieldset>
+							</fieldset> -->
 						</form>			
 					</div>
 				</div>			
