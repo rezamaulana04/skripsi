@@ -202,11 +202,11 @@ $data = mysqli_fetch_array($data);
                                                     <i class="fas fa-table"></i>Fakultass / Lembaga
                                                 </a>
                                             </li>
-                                            <li class="has-sub">
+                                            <!-- <li class="has-sub">
                                                 <a class="js-arrow" href="riwayat.php">
                                                     <i class="fas fa-copy"></i>Riwayat Pengaduan
                                                 </a>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                     </nav>
                                 </div>
