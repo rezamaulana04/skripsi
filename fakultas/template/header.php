@@ -108,7 +108,7 @@ if(is_null($data['foto']) || !file_exists($data['foto'])) {
                             <aside class="menu-sidebar d-none d-lg-block">
                                 <div class="logo">
                                     <a href="#">
-                                        <img  style="" src="../images/icon/logo3.png" alt="Cool Admin";>
+                                        <img  style="" src="../images/icon/logo4.png" alt="Cool Admin";>
                                     </a>
                                 </div>
                                 <div class="menu-sidebar__content js-scrollbar1">
