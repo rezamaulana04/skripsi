@@ -1,9 +1,9 @@
 <?php
 require '../koneksi.php';
-if (!isset($_SESSION['login_admin'])) {
+if (!isset($_SESSION['login_fakultas'])) {
   header("location: login.php");
 }
-$ses = $_SESSION['login_admin'];
+$ses = $_SESSION['login_fakultas'];
 $data = mysqli_query($conn, "SELECT * FROM tb_fakultas where username = '$ses' limit 1");
 $data = mysqli_fetch_array($data);
 
@@ -84,7 +84,7 @@ if(is_null($data['foto']) || !file_exists($data['foto'])) {
                                                 </a>
                                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                                     <li>
-                                                        <a href="datalaporan.php">Data Pengaduan</a>
+                                                        <a href="data-laporan.php">Data Pengaduan</a>
                                                     </li>
                                                     <!-- <li>
                                                         <a href="dataditerima.php">Pengaduan Di Terima</a>
@@ -94,11 +94,11 @@ if(is_null($data['foto']) || !file_exists($data['foto'])) {
                                                     </li> -->
                                                 </ul>
                                             </li>
-                                            <li>
+                                            <!-- <li>
                                                 <a href="fakultas.php">
                                                     <i class="fas fa-table"></i>Fakultass / Lembaga
                                                 </a>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                     </div>
                                 </nav>
@@ -125,7 +125,7 @@ if(is_null($data['foto']) || !file_exists($data['foto'])) {
                                                 </a>
                                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                                     <li>
-                                                        <a href="datalaporan.php">Data Pengaduan</a>
+                                                        <a href="data-laporan.php">Data Pengaduan</a>
                                                     </li>
                                                     <!-- <li>
                                                         <a href="dataditerima.php">Pengaduan Di Terima</a>
@@ -135,11 +135,11 @@ if(is_null($data['foto']) || !file_exists($data['foto'])) {
                                                     </li> -->
                                                 </ul>
                                             </li>
-                                            <li>
+                                            <!-- <li>
                                                 <a href="fakultas.php">
                                                     <i class="fas fa-table"></i>Fakultass / Lembaga
                                                 </a>
-                                            </li>
+                                            </li> -->
                                             <!-- <li class="has-sub">
                                                 <a class="js-arrow" href="riwayat.php">
                                                     <i class="fas fa-copy"></i>Riwayat Pengaduan

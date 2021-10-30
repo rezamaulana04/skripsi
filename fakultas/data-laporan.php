@@ -1,6 +1,7 @@
 <?php
 
 require 'template/header.php';
+$id_fak = $_SESSION['id_fakultas'];
 $data = mysqli_query($conn, "SELECT * FROM tb_laporan WHERE status='Laporan Terima' AND fak='$id_fak'");
 
 if(isset($_GET['act']) && trim($_GET['act']) == 'validate') {

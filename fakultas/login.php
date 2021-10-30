@@ -15,6 +15,7 @@ if (isset($_POST['login'])) {
   if ($get) {
 
       $_SESSION['login_fakultas'] = $username;
+      $_SESSION['username'] = $get['username'];
       $_SESSION['id_fakultas'] = $get['id'];
       header("location: index.php");
       exit();

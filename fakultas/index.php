@@ -1,7 +1,8 @@
 <?php
 
 require 'template/header.php';
-$data = mysqli_query($conn, "SELECT * FROM tb_fakultas");
+$username = $_SESSION['username'];
+$data = mysqli_query($conn, "SELECT * FROM tb_fakultas where username = '$username'");
 $data = $data = mysqli_fetch_array($data);
 ?>
 
