@@ -1,8 +1,8 @@
 <?php
 
 require 'template/header.php';
-$data = mysqli_query($conn, "SELECT * FROM tb_laporan");
-
+$data = mysqli_query($conn, "SELECT * FROM tb_fakultas");
+$data = $data = mysqli_fetch_array($data);
 ?>
 
 <div class="page-container">
@@ -15,7 +15,7 @@ $data = mysqli_query($conn, "SELECT * FROM tb_laporan");
                             <div class="col-md-12">
                                 <span>Selamat Datang di Halaman Admin Pelaporan</span>
                                 <h1 class="title-4">
-                                    <?= $fuck["nama_fakultas"] ?>
+                                    <?= $data["nama_fakultas"] ?>
                                 </h1>
                                 <hr class="line-seprate">
                             </div>
