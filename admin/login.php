@@ -14,7 +14,7 @@ if (isset($_POST['login'])) {
 
   if ($get) {
 
-      $_SESSION['login_admin'] = $password;
+      $_SESSION['login_admin'] = $username;
       $_SESSION['username'] = $username;
       header("location: index.php");
       exit();
