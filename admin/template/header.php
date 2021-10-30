@@ -6,6 +6,12 @@ if (!isset($_SESSION['login_admin'])) {
 $ses = $_SESSION['login_admin'];
 $data = mysqli_query($conn, "SELECT * FROM tb_admin where username = '$ses' limit 1");
 $data = mysqli_fetch_array($data);
+
+$foto = $data['foto'];
+if(is_null($data['foto']) || !file_exists($data['foto'])) {
+    $foto = '../images/icon/avatar-01.jpg';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +60,7 @@ $data = mysqli_fetch_array($data);
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="../index.html">
-                            <img src="../images/icon/logo.png" alt="CoolAdmin" />
+                            <img  src="../images/icon/logo1.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -101,8 +107,8 @@ $data = mysqli_fetch_array($data);
                             <!-- MENU SIDEBAR-->
                             <aside class="menu-sidebar d-none d-lg-block">
                                 <div class="logo">
-                                    <a href="../#">
-                                        <img src="../images/icon/logo.png" alt="Cool Admin" />
+                                    <a href="#">
+                                        <img  style="" src="../images/icon/logo3.png" alt="Cool Admin";>
                                     </a>
                                 </div>
                                 <div class="menu-sidebar__content js-scrollbar1">
@@ -149,17 +155,17 @@ $data = mysqli_fetch_array($data);
                                         <div class="container-fluid">
                                             <div class="header-wrap">
                                                 <form class="form-header" name="form1" action="fakultas.php" method="get">
-                                                    <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                                    <!-- <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
                                                     <button class="au-btn--submit" type="submit" name="submit" value="search">
                                                         <i class="zmdi zmdi-search"></i>
-                                                    </button>
+                                                    </button> -->
                                                 </form>
                                                 <div class="header-button">
                                                     <div class="noti-wrap">
                                                         <div class="account-wrap">
                                                             <div class="account-item clearfix js-item-menu">
                                                                 <div class="image">
-                                                                    <img src="../images/icon/avatar-01.jpg" alt="John Doe" />
+                                                                    <img src="<?= $foto ?>" alt="John Doe" />
                                                                 </div>
                                                                 <div class="content">
                                                                     <a class="js-acc-btn" href="../#"></a>
@@ -168,19 +174,19 @@ $data = mysqli_fetch_array($data);
                                                                     <div class="info clearfix">
                                                                         <div class="image">
                                                                             <a href="../#">
-                                                                                <img src="../images/icon/avatar-01.jpg" alt="John Doe" />
+                                                                                <img src="<?= $foto ?>" alt="John Doe" />
                                                                             </a>
                                                                         </div>
                                                                         <div class="content">
                                                                             <h5 class="name">
                                                                                 <a href="../#"><?=$data["nama"]?></a>
                                                                             </h5>
-                                                                            <span class="email">johndoe@example.com</span>
+                                                                            <span class="email"><?= $data['username'] ?></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="account-dropdown__body">
                                                                         <div class="account-dropdown__item">
-                                                                            <a href="../#">
+                                                                            <a href="profil.php">
                                                                                 <i class="zmdi zmdi-account"></i>Profil</a>
                                                                             </div>
                                                                             <div class="account-dropdown__footer">
