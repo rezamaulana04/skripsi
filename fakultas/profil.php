@@ -73,9 +73,9 @@
                                     <button type="submit" name="kirim-profil" class="btn btn-primary btn-sm">
                                             <i class="fa fa-dot-circle-o"></i> Update
                                     </button>
-                                    <button type="reset" class="btn btn-danger btn-sm">
+                                    <a href="index.php" class="btn btn-danger btn-sm">  
                                             <i class="fa fa-ban"></i> Cancel
-                                    </button>
+                                    </a>
                                 </form>
                             </div>
                         </div>
