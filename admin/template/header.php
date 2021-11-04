@@ -59,7 +59,7 @@ if(is_null($data['foto']) || !file_exists($data['foto'])) {
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="../index.html">
+                        <a class="logo" href="../index.php">
                             <img  src="../images/icon/logo1.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
