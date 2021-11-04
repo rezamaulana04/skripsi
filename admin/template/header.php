@@ -173,7 +173,7 @@ if(is_null($data['foto']) || !file_exists($data['foto'])) {
                                                                 <div class="account-dropdown js-dropdown">
                                                                     <div class="info clearfix">
                                                                         <div class="image">
-                                                                            <a href="../#">
+                                                                            <a href="../index.php">
                                                                                 <img src="<?= $foto ?>" alt="John Doe" />
                                                                             </a>
                                                                         </div>
