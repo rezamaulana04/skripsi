@@ -75,28 +75,29 @@ if (isset($_GET['laporan_diterima'])) {
 // Laporan Tolak
 
 	if (isset($_GET['tolak_laporan'])) {
-		$id = $_GET['id'];
-		$query = "UPDATE tb_laporan SET status = 'Laporan Tolak' WHERE id = '$id'";
+			$id = $_GET['id'];
+			$query = "UPDATE tb_laporan SET status = 'Laporan Tolak' WHERE id = '$id'";
 
-	// EDIT LAPORAN
-		mysqli_query($conn, $query);
-		if (mysqli_affected_rows($conn) > 0) {
-			$forEmail = mysqli_query($conn, "SELECT * FROM tb_laporan where id = '$id' ");
-			$forEmail = mysqli_fetch_array($forEmail);
-			mail($forEmail['email'], 'Pengaduan Ditolak', 'Maaf Pengaduan Anda Ditolak, Terima Kasih Telah Melakukan Pengaduan !!!', 'From:cs@uin-report.tryapp.my.id');
-			plugins(); ?>
-			<script>
-				$(document).ready(function() {
-					swal({
-						title: 'Berhasil Ditolak',
-						text: 'Laporan berhasil di Tolak',
-						icon: 'success'
-					}).then((data) => {
-						location.href = 'datalaporan.php';
+		// EDIT LAPORAN
+			mysqli_query($conn, $query);
+			if (mysqli_affected_rows($conn) > 0) {
+				$forEmail = mysqli_query($conn, "SELECT * FROM tb_laporan where id = '$id' ");
+				$forEmail = mysqli_fetch_array($forEmail);
+				mail($forEmail['email'], 'Pengaduan Ditolak', 'Maaf Pengaduan Anda Ditolak, Terima Kasih Telah Melakukan Pengaduan !!!', 'From:cs@uin-report.tryapp.my.id');
+				plugins(); ?>
+				<script>
+					$(document).ready(function() {
+						swal({
+							title: 'Berhasil Ditolak',
+							text: 'Laporan berhasil di Tolak',
+							icon: 'success'
+						}).then((data) => {
+							location.href = 'datalaporan.php';
+						});
 					});
-				});
-			</script>
-			<?php }
+				</script>
+				<?php 
+			}
 		}
 
 // HAPUS LAPORAN
