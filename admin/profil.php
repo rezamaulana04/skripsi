@@ -4,7 +4,7 @@
     $result = mysqli_query($conn, "SELECT * FROM tb_admin WHERE username = '$username' limit 1");
     $get = mysqli_fetch_assoc($result);
     if(is_null($get['foto'])) {
-        $foto = '../images/bg-title-01.jpg';
+        $foto = '../images/bg-title-02.jpg';
     }
     else {
         $foto = $get['foto'];
