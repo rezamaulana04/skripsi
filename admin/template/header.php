@@ -107,8 +107,8 @@ if(is_null($data['foto']) || !file_exists($data['foto'])) {
                             <!-- MENU SIDEBAR-->
                             <aside class="menu-sidebar d-none d-lg-block">
                                 <div class="logo">
-                                    <a href="#">
-                                        <img  style="" src="../images/icon/logo3.png" alt="Cool Admin";>
+                                    <a href="index.php">
+                                        <img src="../images/icon/logo3.png" alt="Cool Admin";>
                                     </a>
                                 </div>
                                 <div class="menu-sidebar__content js-scrollbar1">
@@ -168,18 +168,18 @@ if(is_null($data['foto']) || !file_exists($data['foto'])) {
                                                                     <img src="<?= $foto ?>" alt="John Doe" />
                                                                 </div>
                                                                 <div class="content">
-                                                                    <a class="js-acc-btn" href="../#"></a>
+                                                                    <a class="js-acc-btn" href=""></a>
                                                                 </div>
                                                                 <div class="account-dropdown js-dropdown">
                                                                     <div class="info clearfix">
                                                                         <div class="image">
-                                                                            <a href="../index.php">
-                                                                                <img src="<?= $foto ?>" alt="John Doe" />
+                                                                            <a href="#">
+                                                                                <img src="<?= $foto?>" alt="John Doe" />
                                                                             </a>
                                                                         </div>
                                                                         <div class="content">
                                                                             <h5 class="name">
-                                                                                <a href="../#"><?=$data["nama"]?></a>
+                                                                                <a href="index.php"><?=$data["nama"]?></a>
                                                                             </h5>
                                                                             <span class="email"><?= $data['username'] ?></span>
                                                                         </div>
