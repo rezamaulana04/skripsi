@@ -1,0 +1,7 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^uin\-report\.tryapp\.my\.id$
+RewriteRule ^/?$ "https\:\/\/uin\-report\.tryapp\.my\.id\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^uin\-report\.cfg\.my\.id$
+RewriteRule ^/?$ "https\:\/\/uin\-report\.cfg\.my\.id\/" [R=301,L]
+

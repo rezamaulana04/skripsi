@@ -9,7 +9,7 @@ require '../koneksi.php';
 // 	$from = 'skripsiakhir16@gmail.com';
 // 	$fromName = 'Admin';
 // 	$mail = new PHPMailer(true);
-	
+
 // 	$mail->IsSMTP();
 // 	$mail->Mailer = "smtp";
 //     // $mail->SMTPDebug  = 1;  
@@ -74,6 +74,25 @@ if (isset($_POST['req']) && ($_POST['req'] == 'addLaporan')) {
 		$response = false;
 		die(var_dump(mysqli_error($conn)));
 	}
+	echo $response;
+}
+
+if (isset($_POST['req']) && ($_POST['req'] == 'cekLaporan')) {
+	$word = $_POST['deskripsi'];
+	$fak = $_POST['fakultas'];
+
+	$laporan = mysqli_query($conn, "SELECT * FROM tb_laporan WHERE status='Laporan Baru' AND fak='$fak'");
+	$response = false;
+
+	foreach ($laporan as $lap) {
+		$deksripsi = $lap['deksripsi'];
+
+		similar_text($word, $deksripsi, $same);
+		if ($same > 70) {
+			$response = true;
+		}
+	}
+
 	echo $response;
 }
 ?>

@@ -121,7 +121,7 @@ if (isset($_POST["submit"])){
 								<h4>Complaint Information</h4>
 								
 								<label for="fak">Fakultas / Lembaga <code>*</code></label>
-								<select name="fak" class="form-control required">
+								<select name="fak" id="fakultas" class="form-control required">
 									<option value="">.:: Pilih Fakultas ::.</option>
 									<?php  foreach($fakultas as $key) : ?>
 										<option value="<?= $key['id'] ?>">
@@ -129,8 +129,8 @@ if (isset($_POST["submit"])){
 										</option>
 									<?php endforeach ?>
 								</select>
-								<label for="userName">Deskripsi Pengaduan <code>*</code></label>
-								<textarea id="userName" name="deksripsi" rows="7" class="form-control mb-2 required"></textarea> 
+								<label for="deskripsi">Deskripsi Pengaduan <code>*</code></label>
+								<textarea id="deskripsi" name="deksripsi" rows="7" class="form-control mb-2 required"></textarea> 
 								<label for="confirm">Foto</label>
 								<input id="confirm" name="foto" type="file" class="form-control" >
 								<input type="hidden" name="req" value="addLaporan">
@@ -171,20 +171,20 @@ if (isset($_POST["submit"])){
 	<script src="../js/sweetalert2/sweetalert2.all.min.js"></script>
 	<script type="text/javascript">
 		<?php 
-			if (isset($_GET['verfied'])) {
-				$kode_laporan = $_GET['verfied'];
-				$cheking = mysqli_query($conn, "SELECT * from tb_laporan where kode_laporan = '$kode_laporan' and verified = 1");
-				if(mysqli_num_rows($cheking) > 0) {
-					?>
-						Swal.fire({
-							title: 'Berhasil Di Verifikasi',
-							text: 'Pengaduan Berhasil Dibuat',
-							type: 'success',
-						});
-					<?php
-				}
-				
+		if (isset($_GET['verfied'])) {
+			$kode_laporan = $_GET['verfied'];
+			$cheking = mysqli_query($conn, "SELECT * from tb_laporan where kode_laporan = '$kode_laporan' and verified = 1");
+			if(mysqli_num_rows($cheking) > 0) {
+				?>
+				Swal.fire({
+					title: 'Berhasil Di Verifikasi',
+					text: 'Pengaduan Berhasil Dibuat',
+					type: 'success',
+				});
+				<?php
 			}
+
+		}
 		?>
 		$(document).ready(function() {
 			particlesJS("particles-js", 
@@ -299,18 +299,18 @@ if (isset($_POST["submit"])){
 				"retina_detect": true
 			}
 			);
-});
-</script>
+		});
+	</script>
 
-<script>
-	var form = $("#example-advanced-form").show();
+	<script>
+		var form = $("#example-advanced-form").show();
 
-	form.steps({
-		headerTag: "h3",
-		bodyTag: "fieldset",
-		transitionEffect: "slideLeft",
-		onStepChanging: function (event, currentIndex, newIndex)
-		{
+		form.steps({
+			headerTag: "h3",
+			bodyTag: "fieldset",
+			transitionEffect: "slideLeft",
+			onStepChanging: function (event, currentIndex, newIndex)
+			{
 			// Allways allow previous action even if the current form is not valid!
 			if (currentIndex > newIndex)
 			{
@@ -351,7 +351,7 @@ if (isset($_POST["submit"])){
 		},
 		onFinished: function (event, currentIndex)
 		{
-			var data = new FormData($('form')[0]);
+			var formData = new FormData($('form')[0]);
 
 			var email_input = $('#email').val()
 			var email_verify = "@uin-alauddin.ac.id"
@@ -362,28 +362,45 @@ if (isset($_POST["submit"])){
 					type: 'warning'
 				});
 			} else {
+				var deskripsi = $('#deskripsi').val();
+				var fakultas = $('#fakultas').val();
 				$.ajax({
 					url: "controller.php",
-					enctype: "multipart/form-data",
 					method: "POST",
-					data: data,
-					contentType: false,
-					processData: false,
+					data: { req: 'cekLaporan', deskripsi: deskripsi, fakultas: fakultas },
 					success: function (data) {
-						if (data == true) {
+						if (data == 1) {
 							Swal.fire({
-								title: 'Cek Email',
-								text: 'Silahkan Cek Email Untuk Verifikasi Pengaduan',
-								type: 'success',
-								onClose: () => {
-									location.href = "index.php";
-								}
+								title: 'Pengaduan sudah ada!',
+								text: 'Pengaduan yang anda masukkan telah di adukan/dilaporkan sebelumnya',
+								type: 'warning'
 							});
 						} else {
-							Swal.fire({
-								title: 'Gagal Diproses',
-								text: 'Terjadi kesalahan Proses',
-								type: 'error'
+							$.ajax({
+								url: "controller.php",
+								enctype: "multipart/form-data",
+								method: "POST",
+								data: formData,
+								contentType: false,
+								processData: false,
+								success: function (data) {
+									if (data == true) {
+										Swal.fire({
+											title: 'Cek Email',
+											text: 'Silahkan Cek Email Untuk Verifikasi Pengaduan',
+											type: 'success',
+											onClose: () => {
+												location.href = "index.php";
+											}
+										});
+									} else {
+										Swal.fire({
+											title: 'Gagal Diproses',
+											text: 'Terjadi kesalahan Proses',
+											type: 'error'
+										});
+									}
+								}
 							});
 						}
 					}
