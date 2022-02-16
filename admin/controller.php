@@ -51,7 +51,7 @@ if (isset($_GET['laporan_diterima'])) {
 	$forEmail = mysqli_query($conn, "SELECT * FROM tb_laporan where id = '$id' ");
 		$forEmail = mysqli_fetch_array($forEmail);
 		// sendEmail($forEmail['email'], $forEmail['nama'], 'Pengaduan Anda diterima', "Penerima");
-		mail($forEmail['email'], 'Pengaduan diterima', 'Pengaduan Anda Telah diterima, Terima Kasih Telah Melakukan Pengaduan !!!', 'From:cs@uin-report.tryapp.my.id');
+		mail($forEmail['email'], 'Pengaduan diterima', 'Pengaduan Anda Telah diterima, Terima Kasih Telah Melakukan Pengaduan !!!', 'From:cs@uin-report.cfg.my.id');
 	// EDIT LAPORAN
 	
 	if (mysqli_query($conn, $query)) {
@@ -83,7 +83,7 @@ if (isset($_GET['laporan_diterima'])) {
 			if (mysqli_affected_rows($conn) > 0) {
 				$forEmail = mysqli_query($conn, "SELECT * FROM tb_laporan where id = '$id' ");
 				$forEmail = mysqli_fetch_array($forEmail);
-				mail($forEmail['email'], 'Pengaduan Ditolak', 'Maaf Pengaduan Anda Ditolak, Terima Kasih Telah Melakukan Pengaduan !!!', 'From:cs@uin-report.tryapp.my.id');
+				mail($forEmail['email'], 'Pengaduan Ditolak', 'Maaf Pengaduan Anda Ditolak, Terima Kasih Telah Melakukan Pengaduan !!!', 'From:cs@uin-report.cfg.my.id');
 				plugins(); ?>
 				<script>
 					$(document).ready(function() {
