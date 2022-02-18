@@ -106,7 +106,7 @@ if (isset($_POST["submit"])){
 							<fieldset class="form-input">
 								<h4>Profile Information</h4>
 
-								<label for="name">NIP / NIM <code>*</code></label>
+								<label for="name">NIP / NIM / NIK<code>*</code></label>
 								<input id="name" name="nim" type="text" class="form-control required">
 								<label for="surname">NAMA <code>*</code></label>
 								<input id="surname" name="nama" type="text" class="form-control required">
